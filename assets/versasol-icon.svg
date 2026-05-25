@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 58 64" width="58" height="64">
+  <title>VersaSol — Símbolo / Ícono</title>
+  <desc>Símbolo de doble diagonal VersaSol. Primary: #1B6FF8.</desc>
+
+  <g id="Symbol">
+    <polygon id="slash-primary"   points="0,2 14,2 36,62 22,62"  fill="#1B6FF8"/>
+    <polygon id="slash-secondary" points="22,2 36,2 58,62 44,62" fill="#1B6FF8" opacity="0.45"/>
+  </g>
+</svg>

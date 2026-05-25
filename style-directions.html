@@ -1,0 +1,523 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>VersaSol | Muestras de estilo</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600;700&family=Libre+Franklin:wght@500;600;700&family=Source+Sans+3:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,500;8..60,600;8..60,700&display=swap" rel="stylesheet" />
+    <style>
+      :root {
+        --ink: #102033;
+        --muted: #5d6f83;
+        --line: #d9e4ef;
+        --paper: #f6f9fc;
+        --white: #ffffff;
+        --navy: #071624;
+        --blue: #1b6ff8;
+        --teal: #00b8a9;
+        --apex-red: #531714;
+        --apex-ochre: #b47022;
+        --apex-cream: #f8efe1;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        background: #eef4f8;
+        color: var(--ink);
+      }
+
+      .page {
+        width: min(1180px, calc(100% - 32px));
+        margin: 0 auto;
+        padding: 36px 0 56px;
+      }
+
+      .intro {
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+        gap: 24px;
+        margin-bottom: 24px;
+        font-family: "IBM Plex Sans", system-ui, sans-serif;
+      }
+
+      .intro h1 {
+        margin: 0;
+        max-width: 680px;
+        font-size: clamp(30px, 4vw, 52px);
+        line-height: 1.02;
+        letter-spacing: -0.02em;
+      }
+
+      .intro p {
+        margin: 10px 0 0;
+        max-width: 580px;
+        color: var(--muted);
+        font-size: 16px;
+      }
+
+      .brand-mark {
+        width: 172px;
+        padding-bottom: 8px;
+      }
+
+      .sample {
+        overflow: hidden;
+        margin-top: 24px;
+        border: 1px solid rgba(16, 32, 51, 0.1);
+        background: var(--white);
+      }
+
+      .sample-shell {
+        display: grid;
+        grid-template-columns: minmax(0, 0.9fr) minmax(320px, 0.8fr);
+        min-height: 420px;
+      }
+
+      .sample-copy,
+      .sample-proof {
+        padding: clamp(28px, 5vw, 54px);
+      }
+
+      .sample-kicker {
+        margin: 0 0 14px;
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .sample h2 {
+        margin: 0;
+      }
+
+      .sample-text {
+        margin: 18px 0 0;
+        max-width: 620px;
+      }
+
+      .sample-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 28px;
+      }
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 42px;
+        padding: 0 17px;
+        border-radius: 6px;
+        font-size: 14px;
+        font-weight: 700;
+        text-decoration: none;
+      }
+
+      .proof-card {
+        border: 1px solid rgba(16, 32, 51, 0.1);
+        background: rgba(255, 255, 255, 0.78);
+      }
+
+      .proof-card img {
+        display: block;
+        width: 100%;
+        aspect-ratio: 16 / 10;
+        object-fit: cover;
+        object-position: center top;
+      }
+
+      .metric-row {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        border-top: 1px solid rgba(16, 32, 51, 0.1);
+      }
+
+      .metric-row div {
+        padding: 16px;
+        border-right: 1px solid rgba(16, 32, 51, 0.1);
+      }
+
+      .metric-row div:last-child {
+        border-right: 0;
+      }
+
+      .metric-row strong,
+      .metric-row span {
+        display: block;
+      }
+
+      .style-note {
+        margin: 0;
+        padding: 14px 18px;
+        border-top: 1px solid rgba(16, 32, 51, 0.08);
+        color: #607184;
+        font-family: "IBM Plex Sans", system-ui, sans-serif;
+        font-size: 13px;
+      }
+
+      /* 1. Ingenieria editorial */
+      .editorial {
+        border-radius: 18px;
+        background: #fbfdff;
+      }
+
+      .editorial .sample-shell {
+        background:
+          linear-gradient(90deg, #ffffff 0%, #ffffff 52%, #f4f8fb 52%, #f4f8fb 100%);
+      }
+
+      .editorial .sample-copy {
+        font-family: "Source Sans 3", system-ui, sans-serif;
+      }
+
+      .editorial .sample-kicker {
+        color: var(--teal);
+      }
+
+      .editorial h2 {
+        max-width: 640px;
+        font-family: "Source Serif 4", Georgia, serif;
+        font-size: clamp(38px, 5.2vw, 72px);
+        font-weight: 600;
+        line-height: 0.96;
+        letter-spacing: -0.025em;
+      }
+
+      .editorial .sample-text {
+        color: #4d6175;
+        font-size: 18px;
+        line-height: 1.58;
+      }
+
+      .editorial .btn.primary {
+        background: var(--navy);
+        color: var(--white);
+      }
+
+      .editorial .btn.secondary {
+        border: 1px solid var(--line);
+        color: var(--ink);
+      }
+
+      .editorial .proof-card {
+        overflow: hidden;
+        border-radius: 12px;
+        box-shadow: 0 18px 44px rgba(16, 32, 51, 0.1);
+      }
+
+      .editorial .metric-row strong {
+        color: var(--ink);
+        font-family: "Source Serif 4", Georgia, serif;
+        font-size: 24px;
+        font-weight: 600;
+      }
+
+      .editorial .metric-row span {
+        margin-top: 4px;
+        color: var(--muted);
+        font-size: 12px;
+      }
+
+      /* 2. Swiss industrial SaaS */
+      .swiss {
+        border-radius: 4px;
+        background: var(--white);
+        font-family: "IBM Plex Sans", system-ui, sans-serif;
+      }
+
+      .swiss .sample-shell {
+        grid-template-columns: minmax(0, 0.82fr) minmax(340px, 0.88fr);
+      }
+
+      .swiss .sample-kicker {
+        color: var(--blue);
+        font-family: "IBM Plex Mono", monospace;
+        letter-spacing: 0.04em;
+        text-transform: none;
+      }
+
+      .swiss h2 {
+        max-width: 660px;
+        font-size: clamp(36px, 4.4vw, 62px);
+        font-weight: 600;
+        line-height: 0.98;
+        letter-spacing: -0.035em;
+      }
+
+      .swiss .sample-text {
+        color: #45586d;
+        font-size: 17px;
+        line-height: 1.55;
+      }
+
+      .swiss .btn.primary {
+        background: var(--teal);
+        color: #062220;
+      }
+
+      .swiss .btn.secondary {
+        border: 1px solid #cdd9e5;
+        color: var(--ink);
+      }
+
+      .swiss .sample-proof {
+        border-left: 1px solid #dbe5ef;
+        background: #f7fafc;
+      }
+
+      .swiss .proof-card {
+        border-radius: 4px;
+        box-shadow: none;
+      }
+
+      .swiss .metric-row strong {
+        color: var(--navy);
+        font-family: "IBM Plex Mono", monospace;
+        font-size: 20px;
+        font-weight: 600;
+      }
+
+      .swiss .metric-row span {
+        margin-top: 5px;
+        color: var(--muted);
+        font-size: 12px;
+      }
+
+      /* 3. Premium LATAM industrial */
+      .latam {
+        border-radius: 16px;
+        background: var(--apex-red);
+        color: var(--apex-cream);
+        font-family: "DM Sans", system-ui, sans-serif;
+      }
+
+      .latam .sample-shell {
+        background:
+          linear-gradient(135deg, rgba(83, 23, 20, 0.98) 0%, rgba(99, 37, 19, 0.96) 58%, rgba(9, 19, 31, 0.98) 100%);
+      }
+
+      .latam .sample-kicker {
+        color: #f0b15a;
+      }
+
+      .latam h2 {
+        max-width: 690px;
+        font-family: "Libre Franklin", "DM Sans", system-ui, sans-serif;
+        font-size: clamp(36px, 4.9vw, 66px);
+        font-weight: 700;
+        line-height: 1;
+        letter-spacing: -0.035em;
+      }
+
+      .latam .sample-text {
+        color: rgba(248, 239, 225, 0.76);
+        font-size: 18px;
+        line-height: 1.56;
+      }
+
+      .latam .btn.primary {
+        background: var(--apex-cream);
+        color: var(--apex-red);
+      }
+
+      .latam .btn.secondary {
+        border: 1px solid rgba(248, 239, 225, 0.28);
+        color: var(--apex-cream);
+      }
+
+      .latam .sample-proof {
+        background: rgba(12, 8, 7, 0.18);
+      }
+
+      .latam .proof-card {
+        overflow: hidden;
+        border-color: rgba(248, 239, 225, 0.18);
+        border-radius: 12px;
+        background: rgba(248, 239, 225, 0.08);
+        box-shadow: 0 20px 48px rgba(0, 0, 0, 0.2);
+      }
+
+      .latam .metric-row {
+        border-top-color: rgba(248, 239, 225, 0.16);
+      }
+
+      .latam .metric-row div {
+        border-right-color: rgba(248, 239, 225, 0.16);
+      }
+
+      .latam .metric-row strong {
+        color: #ffffff;
+        font-size: 24px;
+        font-weight: 700;
+      }
+
+      .latam .metric-row span {
+        margin-top: 5px;
+        color: rgba(248, 239, 225, 0.65);
+        font-size: 12px;
+      }
+
+      .latam .style-note {
+        border-top-color: rgba(248, 239, 225, 0.12);
+        color: rgba(248, 239, 225, 0.7);
+      }
+
+      @media (max-width: 860px) {
+        .intro {
+          align-items: flex-start;
+          flex-direction: column;
+        }
+
+        .sample-shell {
+          grid-template-columns: 1fr;
+        }
+
+        .editorial .sample-shell {
+          background: #ffffff;
+        }
+
+        .swiss .sample-proof {
+          border-left: 0;
+          border-top: 1px solid #dbe5ef;
+        }
+      }
+
+      @media (max-width: 560px) {
+        .page {
+          width: min(100% - 20px, 1180px);
+          padding-top: 20px;
+        }
+
+        .sample-copy,
+        .sample-proof {
+          padding: 24px;
+        }
+
+        .metric-row {
+          grid-template-columns: 1fr;
+        }
+
+        .metric-row div {
+          border-right: 0;
+          border-bottom: 1px solid rgba(16, 32, 51, 0.1);
+        }
+
+        .metric-row div:last-child {
+          border-bottom: 0;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="page">
+      <header class="intro">
+        <div>
+          <h1>Tres rutas visuales para VersaSol.</h1>
+          <p>
+            Todas respetan la paleta actual. La diferencia esta en tipografia,
+            jerarquia, sombras y cuanto protagonismo damos al producto frente al discurso comercial.
+          </p>
+        </div>
+        <img class="brand-mark" src="assets/versasol-horizontal.svg" alt="VersaSol" />
+      </header>
+
+      <section class="sample editorial">
+        <div class="sample-shell">
+          <div class="sample-copy">
+            <p class="sample-kicker">Estilo 1 | Ingenieria editorial</p>
+            <h2>Software de mantenimiento con criterio de campo.</h2>
+            <p class="sample-text">
+              VersaMaint ordena activos, ordenes, preventivos, inventario y evidencia sin convertir
+              la implementacion en una carga pesada. Cuando el equipo no tiene tiempo, VersaSol acompana.
+            </p>
+            <div class="sample-actions">
+              <a class="btn primary" href="#">Solicitar diagnostico</a>
+              <a class="btn secondary" href="#">Ver planes</a>
+            </div>
+          </div>
+          <div class="sample-proof">
+            <article class="proof-card">
+              <img src="assets/capturas/principal.png" alt="Captura de VersaMaint" />
+              <div class="metric-row">
+                <div><strong>25 GB</strong><span>incluidos en Starter</span></div>
+                <div><strong>6+3</strong><span>usuarios + solicitantes</span></div>
+                <div><strong>$129</strong><span>entrada mensual</span></div>
+              </div>
+            </article>
+          </div>
+        </div>
+        <p class="style-note">
+          Mas sobrio y humano. Ideal si VersaSol quiere sentirse como firma tecnica con software propio.
+        </p>
+      </section>
+
+      <section class="sample swiss">
+        <div class="sample-shell">
+          <div class="sample-copy">
+            <p class="sample-kicker">02 / Swiss industrial SaaS</p>
+            <h2>Control operativo sin ruido visual.</h2>
+            <p class="sample-text">
+              Una interfaz directa para planificar, asignar, cerrar y auditar trabajos. Menos ornamentacion,
+              mas claridad para supervisores, tecnicos y gerencia.
+            </p>
+            <div class="sample-actions">
+              <a class="btn primary" href="#">Evaluar CMMS</a>
+              <a class="btn secondary" href="#">Comparar costos</a>
+            </div>
+          </div>
+          <div class="sample-proof">
+            <article class="proof-card">
+              <img src="assets/capturas/planificador-proyeccion.png" alt="Planificador de VersaMaint" />
+              <div class="metric-row">
+                <div><strong>PM</strong><span>horizon y proyeccion</span></div>
+                <div><strong>OT</strong><span>flujo completo</span></div>
+                <div><strong>KPI</strong><span>indicadores accionables</span></div>
+              </div>
+            </article>
+          </div>
+        </div>
+        <p class="style-note">
+          Preciso, modular y menos emocional. Ideal si se quiere vender eficiencia y orden de producto.
+        </p>
+      </section>
+
+      <section class="sample latam">
+        <div class="sample-shell">
+          <div class="sample-copy">
+            <p class="sample-kicker">Estilo 3 | Premium LATAM industrial</p>
+            <h2>Tecnologia seria para plantas que no pueden detenerse.</h2>
+            <p class="sample-text">
+              VersaMaint pone el sistema. VersaSol pone el criterio de mantenimiento, la implementacion y el soporte
+              tecnico cuando la operacion necesita avanzar sin esperar meses.
+            </p>
+            <div class="sample-actions">
+              <a class="btn primary" href="#">Hablar con VersaSol</a>
+              <a class="btn secondary" href="#">Ver implementacion APEX</a>
+            </div>
+          </div>
+          <div class="sample-proof">
+            <article class="proof-card">
+              <img src="assets/capturas/ot-suministros-costos.png" alt="Costos y suministros de OT" />
+              <div class="metric-row">
+                <div><strong>APEX</strong><span>acompanamiento</span></div>
+                <div><strong>Campo</strong><span>criterio tecnico</span></div>
+                <div><strong>CMMS</strong><span>gestion diaria</span></div>
+              </div>
+            </article>
+          </div>
+        </div>
+        <p class="style-note">
+          Mas calido y comercial, pero sin caer en plantilla AI. Bueno para mezclar SaaS con servicios tecnicos.
+        </p>
+      </section>
+    </main>
+  </body>
+</html>
