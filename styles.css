@@ -252,6 +252,16 @@ h1 {
   object-position: center top;
 }
 
+.hero-capture-component {
+  background: #f8fafc;
+}
+
+.hero-capture-component img {
+  object-fit: contain;
+  object-position: center center;
+  padding: 16px;
+}
+
 .mac-window {
   overflow: hidden;
   border: 1px solid rgba(16, 32, 51, 0.1);
@@ -1170,6 +1180,20 @@ section {
   border-radius: inherit;
 }
 
+.capture-card-component .capture-frame {
+  background: #f8fafc;
+}
+
+.capture-card-component .capture-frame::after {
+  display: none;
+}
+
+.capture-card-component .capture-frame img {
+  object-fit: contain;
+  object-position: center center;
+  padding: 10px;
+}
+
 .kanban-process-shot img,
 .capture-card-stacked .capture-frame img {
   object-fit: contain;
@@ -1685,22 +1709,69 @@ td small {
 
 .director-photo,
 .director-video {
-  display: grid;
-  place-items: center;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   min-height: 280px;
-  border: 1px dashed rgba(240, 177, 90, 0.3);
-  border-radius: 8px;
-  background: rgba(248, 239, 225, 0.06);
+  border: 1px solid rgba(240, 177, 90, 0.22);
+  border-radius: 12px;
+  background: radial-gradient(circle at center, rgba(83, 23, 20, 0.35) 0%, rgba(16, 32, 51, 0.88) 100%);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.24);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.director-photo span,
-.director-video span {
-  color: rgba(248, 239, 225, 0.72);
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: 0.08em;
+.director-photo:hover,
+.director-video:hover {
+  border-color: var(--apex-ochre);
+  transform: translateY(-4px);
+  box-shadow: 0 16px 38px rgba(0, 0, 0, 0.45);
+}
+
+.placeholder-overlay {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 24px;
+  color: var(--apex-cream);
   text-align: center;
-  text-transform: uppercase;
+  width: 100%;
+  height: 100%;
+}
+
+.placeholder-overlay svg {
+  width: 48px;
+  height: 48px;
+  color: var(--apex-ochre);
+  opacity: 0.85;
+  filter: drop-shadow(0 2px 6px rgba(0,0,0,0.3));
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.director-photo:hover svg,
+.director-video:hover svg {
+  transform: scale(1.15) rotate(3deg);
+  color: var(--white);
+}
+
+.placeholder-overlay span {
+  font-family: var(--font-display);
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--white);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  margin-top: 4px;
+}
+
+.placeholder-overlay small {
+  font-size: 12px;
+  color: rgba(248, 239, 225, 0.6);
+  font-weight: 500;
+  letter-spacing: 0.02em;
 }
 
 .director-bio h3 {
@@ -1946,8 +2017,8 @@ td small {
   }
 
   .menu-button {
-    width: 40px;
-    height: 40px;
+    width: 44px;
+    height: 44px;
   }
 
   .nav-links {
@@ -1966,8 +2037,52 @@ td small {
     padding: 92px 16px 24px;
   }
 
+  .section-container,
+  .market-container,
+  .product-container,
+  .content-container,
+  .text-container,
+  .media-container,
+  .hero-container,
+  .decision-grid,
+  .capture-gallery,
+  .split-section,
+  .market-panel,
+  .process-feature,
+  .capture-card,
+  .apex-hero,
+  .apex-method,
+  .apex-director,
+  .apex-impact,
+  .apex-services {
+    width: min(100%, calc(100vw - 32px));
+    max-width: calc(100vw - 32px);
+  }
+
+  .hero-content,
+  .section-heading,
+  .split-copy,
+  .market-copy,
+  .capture-copy,
+  .process-copy {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+  }
+
   h1 {
-    font-size: clamp(34px, 10vw, 42px);
+    max-width: 100%;
+    font-size: clamp(30px, 8.8vw, 36px);
+    overflow-wrap: break-word;
+  }
+
+  .split-copy h2,
+  .section-heading h2,
+  .cta-section h2,
+  .market-copy h2 {
+    max-width: 100%;
+    font-size: clamp(28px, 8vw, 36px);
+    overflow-wrap: break-word;
   }
 
   .hero-copy {
@@ -2078,6 +2193,10 @@ td small {
     --shot-height: clamp(260px, 80vw, 420px);
   }
 
+  .capture-card-component .capture-frame img {
+    padding: 6px;
+  }
+
   .capture-card-panorama {
     --shot-height: clamp(130px, 42vw, 210px);
   }
@@ -2144,11 +2263,23 @@ td small {
     margin-top: 22px;
     border-radius: 12px;
     box-shadow: 0 14px 34px rgba(16, 32, 51, 0.09);
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    border: 1px solid var(--line);
+    background: 
+      linear-gradient(to right, var(--white) 30%, rgba(255,255,255,0)),
+      linear-gradient(to right, rgba(255,255,255,0), var(--white) 70%) 100% 0,
+      radial-gradient(farthest-side at 0 50%, rgba(16,32,51,0.12), rgba(0,0,0,0)),
+      radial-gradient(farthest-side at 100% 50%, rgba(16,32,51,0.12), rgba(0,0,0,0)) 100% 0;
+    background-repeat: no-repeat;
+    background-size: 40px 100%, 40px 100%, 14px 100%, 14px 100%;
+    background-attachment: local, local, scroll, scroll;
   }
 
   .comparison-table,
   .pricing-matrix {
     min-width: 760px;
+    border-collapse: collapse;
   }
 
   .comparison-table th,
@@ -2186,7 +2317,17 @@ td small {
 
   .addon-table-wrap {
     overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
     border-radius: 10px;
+    border: 1px solid var(--line);
+    background: 
+      linear-gradient(to right, var(--white) 30%, rgba(255,255,255,0)),
+      linear-gradient(to right, rgba(255,255,255,0), var(--white) 70%) 100% 0,
+      radial-gradient(farthest-side at 0 50%, rgba(16,32,51,0.12), rgba(0,0,0,0)),
+      radial-gradient(farthest-side at 100% 50%, rgba(16,32,51,0.12), rgba(0,0,0,0)) 100% 0;
+    background-repeat: no-repeat;
+    background-size: 40px 100%, 40px 100%, 14px 100%, 14px 100%;
+    background-attachment: local, local, scroll, scroll;
   }
 
   .addon-table {
@@ -2256,9 +2397,27 @@ td small {
     height: 260px;
   }
 
+  .capture-card-component .capture-frame {
+    height: 280px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    background: #f8fafc !important;
+    border: 1px solid var(--line) !important;
+    border-radius: 12px !important;
+    overflow: hidden !important;
+  }
+
+  .capture-card-component .capture-frame img {
+    height: 90% !important;
+    width: 90% !important;
+    object-fit: contain !important;
+    padding: 8px !important;
+  }
+
   .process-copy h3,
   .capture-copy h3 {
-    font-size: clamp(25px, 8vw, 34px);
+    font-size: clamp(23px, 7vw, 30px);
   }
 
   .process-copy p,
@@ -2460,5 +2619,10 @@ td small {
   }
   .modal-header {
     padding: 16px;
+  }
+  .modal-close {
+    width: 44px;
+    height: 44px;
+    font-size: 32px;
   }
 }
