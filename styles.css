@@ -1243,6 +1243,56 @@ section {
   object-position: center top;
 }
 
+.process-feature-wide {
+  --shot-width: min(100%, 660px);
+  --shot-height: clamp(360px, 40vw, 520px);
+  grid-template-columns: minmax(0, 1.12fr) minmax(330px, 0.88fr);
+}
+
+.process-feature-wide .kanban-container {
+  padding: 12px;
+}
+
+.process-feature-wide .kanban-process-shot {
+  width: var(--shot-width);
+  height: var(--shot-height);
+  aspect-ratio: auto;
+}
+
+.capture-card-image-first .capture-media-container {
+  order: 1;
+}
+
+.capture-card-image-first .capture-copy {
+  order: 2;
+}
+
+.capture-card-image-first.capture-card-stacked {
+  gap: 24px;
+  align-items: start;
+}
+
+.capture-card-image-first .capture-copy {
+  max-width: 860px;
+}
+
+.capture-card-panorama {
+  min-height: auto;
+}
+
+.capture-card-panorama .capture-media-container {
+  height: var(--shot-height);
+  min-height: 0;
+}
+
+.capture-card-panorama .capture-frame img {
+  object-position: center center;
+}
+
+.capture-card-side .capture-media-tall .capture-frame img {
+  object-position: center center;
+}
+
 .teaser-note {
   max-width: 760px;
   margin: 18px 0 0;
@@ -2624,5 +2674,68 @@ td small {
     width: 44px;
     height: 44px;
     font-size: 32px;
+  }
+}
+
+@media (max-width: 860px) {
+  .process-feature-wide {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .process-feature-wide .kanban-process-shot {
+    width: 100%;
+  }
+}
+
+@media (max-width: 640px) {
+  .process-feature-wide {
+    padding: 14px;
+  }
+
+  .process-feature-wide .kanban-container {
+    height: 330px;
+    min-height: 330px;
+  }
+
+  .process-feature-wide .kanban-process-shot {
+    height: 300px;
+  }
+
+  .capture-card-image-first .capture-media-container,
+  .capture-card-side .capture-media-container,
+  .capture-card-stacked .capture-media-container {
+    order: 1 !important;
+  }
+
+  .capture-card-image-first .capture-copy,
+  .capture-card-side .capture-copy,
+  .capture-card-stacked .capture-copy {
+    order: 2 !important;
+  }
+
+  .capture-card-landscape .capture-media-container {
+    height: 255px;
+  }
+
+  .capture-card-panorama .capture-media-container {
+    height: 155px;
+  }
+
+  .capture-card-side .capture-media-tall {
+    height: 360px;
+  }
+
+  .capture-card-compact .capture-media-container {
+    height: 235px;
+  }
+
+  .capture-card-component .capture-frame {
+    height: 100% !important;
+  }
+
+  .capture-card-component .capture-frame img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: contain !important;
   }
 }
