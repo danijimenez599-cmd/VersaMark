@@ -1,0 +1,441 @@
+/* =========================================================================
+   VersaSol — Sistema de Diseño Corporativo Editorial & Blueprint (sol.css)
+   Inspirado en los portales técnicos de Buro Happold y Arup.
+   Layout de rejillas que alterna entre secciones claras y oscuras.
+   ========================================================================= */
+
+:root {
+  --primary:     #1B6FF8;
+  --primary-l:   #4B8EFA;
+  --accent:      #06B6D4;
+  --accent-green:#2CC275;
+  --accent-yellow:#FFC024;
+  
+  --font: 'Space Grotesk', system-ui, sans-serif;
+  --mono: 'DM Mono', monospace;
+  --ease: cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font);
+  background-color: #F9FAFB;
+  color: #071624;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* ── Section Scoping (Alternancia Claro/Oscuro) ───────────────────────── */
+.section-light {
+  background-color: #F9FAFB;
+  color: #071624;
+  --bg-color: #F9FAFB;
+  --border-color: rgba(7, 22, 36, 0.08);
+  --text-main: #071624;
+  --text-sec: #5D6F83;
+  --grid-line-color: rgba(7, 22, 36, 0.015);
+  --hover-bg: rgba(27, 111, 248, 0.03);
+}
+
+.section-dark {
+  background-color: #071624;
+  color: #EAF1FB;
+  --bg-color: #071624;
+  --border-color: rgba(255, 255, 255, 0.08);
+  --text-main: #EAF1FB;
+  --text-sec: #A6BAD6;
+  --grid-line-color: rgba(180, 210, 255, 0.02);
+  --hover-bg: rgba(255, 255, 255, 0.02);
+}
+
+/* ── CAD Blueprint Grid Background ───────────────────────────────────── */
+.blueprint-grid {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image: 
+    linear-gradient(to right, var(--grid-line-color) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--grid-line-color) 1px, transparent 1px);
+  background-size: 80px 80px;
+}
+
+/* Ambient glow overlays for dark sections */
+.glow-bg {
+  position: absolute;
+  top: -10%;
+  right: 5%;
+  width: 800px;
+  height: 800px;
+  background: radial-gradient(circle, rgba(27, 111, 248, 0.14) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.glow-bg-2 {
+  position: absolute;
+  bottom: -10%;
+  left: -5%;
+  width: 700px;
+  height: 700px;
+  background: radial-gradient(circle, rgba(6, 182, 212, 0.08) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ── Structural Grid Borders ─────────────────────────────────────────── */
+.grid-container {
+  display: grid;
+  border-left: 1px solid var(--border-color);
+  border-right: 1px solid var(--border-color);
+  background-color: var(--bg-color);
+}
+
+.grid-row {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  border-bottom: 1px solid var(--border-color);
+  width: 100%;
+}
+
+.grid-col {
+  grid-column: span var(--span, 12);
+  border-right: 1px solid var(--border-color);
+  padding: clamp(32px, 5vw, 64px);
+  position: relative;
+  z-index: 1;
+}
+
+.grid-col:last-child {
+  border-right: none;
+}
+
+.wrap {
+  width: 100%;
+  max-width: 1240px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+/* ── Typography & Editorial Style ────────────────────────────────────── */
+.headline-huge {
+  font-size: clamp(36px, 6vw, 76px);
+  font-weight: 700;
+  line-height: 0.98;
+  letter-spacing: -0.04em;
+  text-transform: uppercase;
+  color: var(--text-main);
+}
+
+.title-section {
+  font-size: clamp(26px, 3.5vw, 42px);
+  font-weight: 600;
+  line-height: 1.08;
+  letter-spacing: -0.025em;
+  color: var(--text-main);
+}
+
+.manifesto-text {
+  font-size: clamp(16px, 1.4vw, 20px);
+  font-weight: 300;
+  line-height: 1.6;
+  color: var(--text-sec);
+}
+
+.label-mono {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--accent);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.label-mono::before {
+  content: "";
+  width: 5px;
+  height: 5px;
+  background: var(--accent);
+  display: inline-block;
+  border-radius: 50%;
+  box-shadow: 0 0 6px var(--accent);
+}
+
+/* CAD Coordinates overlay info */
+.cad-coords {
+  position: absolute;
+  top: 12px;
+  right: 16px;
+  font-family: var(--mono);
+  font-size: 9px;
+  color: var(--text-sec);
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+/* ── Buttons ────────────────────────────────────────────────────────── */
+.btn-corp {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  font-family: var(--font);
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 16px 32px;
+  border: 1px solid var(--border-color);
+  background: rgba(255, 255, 255, 0.02);
+  color: var(--text-main);
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.25s var(--ease);
+}
+
+.btn-corp svg {
+  transition: transform 0.25s var(--ease);
+}
+
+.btn-corp:hover {
+  background: var(--text-main);
+  color: var(--bg-color);
+  border-color: var(--text-main);
+}
+
+.btn-corp:hover svg {
+  transform: translateX(4px);
+}
+
+.btn-corp--primary {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: #ffffff;
+}
+
+.btn-corp--primary:hover {
+  background: var(--text-main);
+  color: var(--bg-color);
+  border-color: var(--text-main);
+}
+
+/* ── Divisions Portfolio Grid ───────────────────────────────────────── */
+.division-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 380px;
+  transition: background 0.3s var(--ease);
+  position: relative;
+}
+
+.division-item:hover {
+  background: var(--hover-bg);
+}
+
+.division-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 24px;
+}
+
+.division-num {
+  font-family: var(--mono);
+  font-size: 20px;
+  color: var(--text-sec);
+  opacity: 0.5;
+  font-weight: 600;
+}
+
+.division-title {
+  font-size: clamp(22px, 2.5vw, 32px);
+  margin-bottom: 12px;
+  font-weight: 600;
+  color: var(--text-main);
+}
+
+.division-desc {
+  color: var(--text-sec);
+  font-size: 15px;
+  line-height: 1.65;
+  margin-bottom: 24px;
+}
+
+.division-tag-wrap {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 28px;
+  flex-wrap: wrap;
+}
+
+.div-tag {
+  font-family: var(--mono);
+  font-size: 9.5px;
+  border: 1px solid var(--border-color);
+  padding: 3px 8px;
+  color: var(--text-sec);
+}
+
+.division-link {
+  font-family: var(--font);
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-main);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: color 0.2s var(--ease);
+  margin-top: auto;
+}
+
+.division-link:hover {
+  color: var(--accent);
+}
+
+.division-link svg {
+  transition: transform 0.2s var(--ease);
+}
+
+.division-link:hover svg {
+  transform: translateX(4px);
+}
+
+/* ── Blueprint CAD synergy box ──────────────────────────────────────── */
+.cad-box {
+  background: rgba(2, 5, 9, 0.4);
+  border: 1px solid var(--border-color);
+  position: relative;
+  height: 380px;
+}
+
+.cad-box::before, .cad-box::after {
+  content: "";
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border: 1.5px solid var(--text-sec);
+  opacity: 0.4;
+  pointer-events: none;
+}
+.cad-box::before { top: 8px; left: 8px; border-right: none; border-bottom: none; }
+.cad-box::after { bottom: 8px; right: 8px; border-left: none; border-top: none; }
+
+/* ── Corporate Header & Footer ──────────────────────────────────────── */
+.corp-header {
+  border-bottom: 1px solid var(--border-color);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background: rgba(5, 10, 18, 0.82);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  --border-color: rgba(255, 255, 255, 0.08); /* force dark borders in header */
+}
+
+.corp-header__inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 72px;
+  border-left: 1px solid var(--border-color);
+  border-right: 1px solid var(--border-color);
+  padding-inline: 40px;
+}
+
+.corp-nav {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.corp-nav a {
+  font-size: 13px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-sub);
+  text-decoration: none;
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  height: 100%;
+  border-left: 1px solid var(--border-color);
+  transition: color 0.2s var(--ease), background 0.2s;
+}
+
+.corp-nav a:last-child {
+  border-right: 1px solid var(--border-color);
+}
+
+.corp-nav a:hover, .corp-nav a.active {
+  color: var(--text);
+  background: rgba(255, 255, 255, 0.02);
+}
+
+/* Footers */
+.corp-footer {
+  border-top: 1px solid var(--border-color);
+  background-color: #020509;
+}
+
+.corp-footer__top {
+  border-left: 1px solid var(--border-color);
+  border-right: 1px solid var(--border-color);
+}
+
+.corp-footer__bottom {
+  border-left: 1px solid var(--border-color);
+  border-right: 1px solid var(--border-color);
+  border-top: 1px solid var(--border-color);
+  padding: 24px 40px;
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--text-sec);
+  opacity: 0.6;
+  letter-spacing: 0.05em;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.grad-text {
+  background: linear-gradient(135deg, var(--primary-l) 10%, var(--accent-l) 90%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Responsive Grid layouts */
+@media (max-width: 1000px) {
+  .grid-col {
+    grid-column: span 12 !important;
+    border-right: none;
+    border-bottom: 1px solid var(--border-color);
+  }
+  .grid-col:last-child {
+    border-bottom: none;
+  }
+  .corp-nav {
+    display: none;
+  }
+}
